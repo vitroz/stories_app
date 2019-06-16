@@ -1,0 +1,120 @@
+  <div class="container">
+    
+    <%= form_with model: @story, local: true do |form| %>
+     
+      <% if @story.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@story.errors.count, "error") %> prohibited
+            this storie from being saved:
+          </h2>
+          <ul>
+            <% @story.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render 'layouts/header' %>
+
+      <div class="solid-border mg50 pd20">
+
+        <div class="columns">
+          <div class="column">
+            <%= form.label :headline %>
+            <%= form.text_field :headline %>          
+          </div>
+
+            <div class="is-one-fifth column has-text-centered">
+               <div class="solid-border <%= "#{story_status(@story)}-status" %>"> <span> <%= story_status_upper(@story) %> </span> </div>         
+            </div>
+          
+        </div>
+
+        <% if current_user.role == 'chief_editor' %>
+          <p>
+            <%= form.label :writer %>
+            <%= form.select :writer_id, User.where(role: 'writer').collect {|x| [x.name, x.id]}, :include_blank => true %>
+          </p>
+        <% else %>
+          <p>
+            <%= form.label 'Writer:' %>
+            <%= @story.writer.name %>
+          </p> 
+        <% end %>
+
+        <% if current_user.role == 'chief_editor' %>
+          <p>
+            <%= form.label :reviewer %>
+            <%= form.select :reviewer_id, User.where(role: 'writer').collect {|x| [x.name, x.id]}, :include_blank => true %>
+          </p>
+        <% else %>
+          <p>
+            <%= form.label 'Reviewer:' %>
+            <%= @story.reviewer.name %>
+          </p>    
+        <% end %>
+       
+        <p>
+          <%= form.label :body %><br>
+          <%= form.text_area :body, :rows => 10, style: 'width:100%;' %>
+        </p>
+
+        <div class="columns">
+          <div class="column">
+          </div>
+          <div class="column is-1">
+            <%= link_to "Cancel", stories_path, class: 'button is-light' %>
+          </div>
+          <div class="column is-11 ">
+            <%= form.submit 'Save', class: 'button is-info' %>
+          </div>
+          
+        </div>
+        
+      </div>
+     
+    <% end %>
+
+    <% unless @story.id.nil? %>
+      <div class="columns">
+        <div class="column">
+          <%= button_to 'REQUEST REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @story.status == 'in_review' %>
+      <div class="columns">
+        <div class="column">
+          <%= button_to 'APPROVE', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
+        </div>
+        <div class="column">
+          <%= button_to 'REQUEST CHANGES', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-warning' %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if current_user.role == 'chief_editor' && @story.id != nil %>
+      <div class="columns">
+        <div class="column">
+          <%= button_to 'PUBLISH', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
+        </div>
+        <div class="column">
+          <%= button_to 'ARCHIVE', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-warning' %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless @story.id.nil? %>
+    <div class="solid-border mg10 pd20">
+      <h2>Comments</h2> <hr>
+        <%= render @story.comments %>
+
+        <h2>Add a comment:</h2> <hr>
+        <%= render 'comments/form' %>
+      </div>
+    <% end %>
+
+  </div>

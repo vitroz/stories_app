@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.main{
+	margin-top: 30px;
+}
+.top-head{
+	height: 34px;
+}
+.app-title{
+	font-size: 1.8em;
+}
+.logged-user{
+	font-size: 1.3em;
+}
+.mg50{
+	margin: 50px;
+}
+.mg1{
+	margin: 1px;
+}
+.mgr50{
+	margin-right: 50px !important;
+}
+.mg10{
+	margin: 10px;
+}
+.pd20{
+	padding: 20px;
+}
+.solid-border{
+	border: 2px solid #DDD;
+}
+.login-outer{
+	margin: 20% !important;
+}
+ul.hmenu {
+	list-style: none; 
+	margin: 0 0 2em;
+	padding: 0;
+}  
+ul.hmenu li {
+	display: inline;  
+}
+.published-status{
+	background-color: #98FB98;
+	color: black;
+}
+.draft-status{
+	background-color: #DCDCDC;
+	color: black;
+}
+.for_review-status{
+	background-color: #4682B4;
+	color: black;
+}
+.in_review-status{
+	background-color: #FFFACD;
+	color: black;
+}
+.approved-status{
+	background-color: #00CED1;
+	color: black;
+}
+.pending-status{
+	background-color: #FFE4B5;
+	color: black;
+}
+.archived-status{
+	background-color: #A9A9A9;
+	color: black;
+}
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+}

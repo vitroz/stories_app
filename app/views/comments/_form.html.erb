@@ -1,0 +1,11 @@
+<%= form_with(model: [ @story, @story.comments.build ], local: true) do |form| %>
+
+  <%= form.hidden_field :commenter, :value => current_user.name %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, :rows => 10, style: 'width:40%;' %>
+  </p>
+  <p>
+    <%= form.submit "Post", class: 'button is-light' %>
+  </p>
+<% end %>

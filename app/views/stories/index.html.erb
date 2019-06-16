@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>News</title>
+	<%= stylesheet_link_tag "application.css" %>
+</head>
+<body class="container main solid-border">
+
+	<div class="container mg50">
+
+    	<%= render 'layouts/header' %>
+		<div class="columns mg1">
+			<div class="column">
+				<div class="columns">
+					<div class="column is-four-fifths">
+						<strong>Status</strong> |
+						<select>
+							<option>Filter by Status</option>
+						</select>
+					</div>
+					<div class="column has-text-right">
+						<div>
+							<% if can? :create, Story %>
+						  		<%= link_to "New Story",new_story_path, class: 'button is-light is-pulled-right' %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		  <% @stories.each do |story| %>
+		  <div class="columns solid-border mg10">
+		  	<div class="column is-four-fifths">
+
+		  		<details>
+				    <summary> <strong> <%= story.headline %> </strong> </summary>
+				    <div>
+				    	<%= story.body %>
+				    </div>
+
+		  		</details>
+
+		  		<div class="columns is-full">
+		  			<br><br>
+		  		</div>
+		  		<div class="columns">
+			  		<div class="column">
+						<span>Writer: <%= defined?(story.writer.name) ? story.writer.name : 'None' %> </span>		
+			  		</div>
+			  		<div class="column">
+			  			<span>Reviewer: <%= defined?(story.reviewer.name) ? story.reviewer.name : 'None' %> </span>		
+			  		</div>  			
+		  		</div>
+		  	</div>
+		  	<div class="column has-text-centered">
+		  		<div class="solid-border <%= "#{story_status(story)}-status" %>"> <span> <%= story.status.upcase %> </span> </div>
+		  			<div class="columns">
+		  				<div class="column">
+		  					<span> On: <%= story.on_story_time %> </span>
+		  				</div>
+		  			</div>
+			  		<div class="columns">
+				  		<div class="column">
+					  		<% if can? :update, Story %>
+								<%= link_to "Edit", edit_story_path(story), class: 'button is-light' %>
+							<% end %>
+				  		</div>			
+			  		</div>
+		  	</div>  	
+		  </div>
+		  <% end %>
+
+	</div>
+
+
+</body>
+</html>

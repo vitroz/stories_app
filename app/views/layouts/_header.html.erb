@@ -1,0 +1,27 @@
+<div class="has-text-right">
+	<ul class="hmenu">
+      <%= render 'devise/menu/login_items' %> <br>		      
+    </ul>			
+</div>
+
+<div class="columns top-head mg10">
+	<div class="column is-full has-text-centered">
+		<strong class="app-title">New York News</strong>
+	</div>
+</div>
+<div class="columns mg1">
+	<div class="column">
+		<div class="columns">
+			<div class="column is-four-fifths">
+				<strong>STORIES</strong> <br>
+			</div>
+			<div class="column has-text-right">
+				<div class="logged-in">
+					<strong class="logged-user"> <%= current_user.name %> </strong> <br>
+					<small> <strong> <%= current_user.role %> </strong> </small>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
