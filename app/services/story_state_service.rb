@@ -7,11 +7,13 @@ class StoryStateService
 
   def call
 
+    @story.status == :unassigned if @story.status == nil
+
     StoryStateService.public_send(@story.status, @options)
 
   end
 
-  def self.unnasigned(options)
+  def self.unassigned(options)
     if(options[:story].writer != nil && options[:story].creator.id == options[:user].id)
       next_state = :draft
     end
@@ -32,7 +34,7 @@ class StoryStateService
   def self.in_review(options) 
     if options[:sub_action] == 'APPROVE' 
       next_state = :approved
-    elsif options[:sub_action] == 'REQUEST CHANGES' 
+    else
       next_state = :pending
     end
   end

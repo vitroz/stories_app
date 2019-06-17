@@ -24,27 +24,17 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.creator = current_user
-    @story.writer = nil
-    @story.reviewer = nil
-    @story.status = :unnasigned
-    if @writer = User.find_by_id(story_params['writer_id'])
-      @story.writer = @writer
-      @story.status = :draft
-    end
-    if @reviewer = User.find_by_id(story_params['reviewer_id'])
-      @story.reviewer = @reviewer
-    end
 
     if @story.save
       redirect_to stories_path
     else
-      render json: {code: 500, message: @story.errors.messages}
+      render 'stories/new'
     end
   end
 
   def update
-    @story = StoryService.new(params).call
-   
+    @story = Story.find(params[:id])   
+
     if @story.update(story_params)
       
       next_state = StoryStateService.new(@story, current_user, nil).call

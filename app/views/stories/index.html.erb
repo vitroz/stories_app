@@ -56,7 +56,7 @@
 		  		</div>
 		  	</div>
 		  	<div class="column has-text-centered">
-		  		<div class="solid-border <%= "#{story_status(story)}-status" %>"> <span> <%= story.status.upcase %> </span> </div>
+		  		<div class="solid-border <%= "#{story_status(story)}-status" %>"> <span> <%= story_status_upper(story) %> </span> </div>
 		  			<div class="columns">
 		  				<div class="column">
 		  					<span> On: <%= story.on_story_time %> </span>

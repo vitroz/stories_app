@@ -1,7 +1,7 @@
 class StoryService
 
   def initialize(params)
-  	@story = Story.new()
+    @story = Story.new(params['story'])
   	if params['id']
       @story = Story.find(params['id'])
     end
@@ -10,10 +10,7 @@ class StoryService
   end
 
   def call
- 
     @story
-
   end
-
 
 end 
