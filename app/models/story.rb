@@ -9,7 +9,7 @@ class Story < ApplicationRecord
   validate :writer_reviewer_are_the_same
 
   def writer_reviewer_are_the_same
-    errors.add(:must_be_different, "writer can't be the same as the reviewer") if self.writer == self.reviewer && (self.writer != nil && self.reviewer != nil)
+    errors.add(:must_be_different, " - writer can't be the same as the reviewer") if self.writer == self.reviewer && (self.writer != nil && self.reviewer != nil)
   end
 
   def on_story_time

@@ -58,26 +58,27 @@
        
         <p>
           <%= form.label :body %><br>
-          <%= form.text_area :body, :rows => 10, style: 'width:100%;' %>
+          <%= form.text_area :body, :rows => 10, style: 'width:100%;', disabled: (@story.writer_id != current_user.id || @story.status != 'unnasigned' && @story.status != 'draft' && @story.status != 'pending') %>
         </p>
 
-        <div class="columns">
-          <div class="column">
+        <% if (@story.status == 'unnasigned' ||  @story.status == 'draft' || @story.status == 'pending')%>
+          <div class="columns has-text-right">
+            <div class="column">
+              <%= link_to "Cancel", stories_path, class: 'button is-light' %>
+            </div>
+            <div class="column is-1">
+              <%= form.submit 'Save', class: 'button is-info' %>
+            </div>
+            
           </div>
-          <div class="column is-1">
-            <%= link_to "Cancel", stories_path, class: 'button is-light' %>
-          </div>
-          <div class="column is-11 ">
-            <%= form.submit 'Save', class: 'button is-info' %>
-          </div>
-          
-        </div>
+        <% end %>
+
         
       </div>
      
     <% end %>
 
-    <% unless @story.id.nil? %>
+    <% if @story.id != nil && (@story.status == 'draft' || @story.status == 'pending') && @story.writer_id == current_user.id %>
       <div class="columns">
         <div class="column">
           <%= button_to 'REQUEST REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -85,8 +86,16 @@
       </div>
     <% end %>
 
+    <% if @story.id != nil && @story.status == 'for_review' && @story.reviewer_id == current_user.id %>
+      <div class="columns has-text-centered">
+        <div class="column">
+          <%= button_to 'REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
+        </div>
+      </div>
+    <% end %>
+
     <% if @story.status == 'in_review' %>
-      <div class="columns">
+      <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'APPROVE', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
         </div>
@@ -96,8 +105,8 @@
       </div>
     <% end %>
 
-    <% if current_user.role == 'chief_editor' && @story.id != nil %>
-      <div class="columns">
+    <% if current_user.role == 'chief_editor' && @story.id != nil && @story.status == 'approved' %>
+      <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'PUBLISH', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
         </div>
@@ -112,7 +121,7 @@
       <h2>Comments</h2> <hr>
         <%= render @story.comments %>
 
-        <h2>Add a comment:</h2> <hr>
+        <hr>
         <%= render 'comments/form' %>
       </div>
     <% end %>
