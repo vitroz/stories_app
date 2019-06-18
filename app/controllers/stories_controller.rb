@@ -4,9 +4,9 @@ class StoriesController < ApplicationController
   def home
   end
 
-  def index
-    #@stories = Story.all
-    @stories = Story.order(created_at: :asc).page(params[:page])
+  def index 
+    @search = Story.search(params[:q])
+    @stories = @search.result.order(created_at: :asc).page(params[:page])
   end
 
   def new

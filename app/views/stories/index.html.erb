@@ -15,10 +15,12 @@
 			<div class="column">
 				<div class="columns">
 					<div class="column is-four-fifths">
-						<strong>Status</strong> |
-						<select>
-							<option>Filter by Status</option>
-						</select>
+						  <%= search_form_for @search do |f| %>
+
+						  	<%= f.label 'Status |' %>
+						  	<%= f.select :status_id_eq, options_from_collection_for_select(Status.all, "id", "name", @search.status_id_eq) , {include_blank: true}, { onchange: 'this.form.submit();' } %>
+
+						  <% end %>
 					</div>
 					<div class="column has-text-right">
 						<div>

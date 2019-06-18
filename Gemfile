@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'cancancan'
 gem 'kaminari'
 gem 'devise'
+gem 'ransack'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
