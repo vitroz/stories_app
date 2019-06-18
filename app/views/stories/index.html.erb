@@ -15,10 +15,11 @@
 			<div class="column">
 				<div class="columns">
 					<div class="column is-four-fifths">
+						  All | My Stories
 						  <%= search_form_for @search do |f| %>
 
 						  	<%= f.label 'Status |' %>
-						  	<%= f.select :status_id_eq, options_from_collection_for_select(Status.all, "id", "name", @search.status_id_eq) , {include_blank: true}, { onchange: 'this.form.submit();' } %>
+						  	<%= f.select :status_id_eq, options_from_collection_for_select(Status.all, "id", "name", @search.status_id_eq) , {include_blank: true}, {class: 'select', onchange: 'this.form.submit();' } %>
 
 						  <% end %>
 					</div>
@@ -38,7 +39,7 @@
 		  	<div class="column is-four-fifths">
 
 
-		  		<% if story.status.name == 'published' || (current_user.id == story.creator_id || current_user.id == story.writer_id || current_user.id == story.reviewer_id) %>
+		  		<% if story_body_visible(current_user, story) %>
 
 		  			<%= render 'full_story', story: story %>
 
@@ -77,7 +78,9 @@
 		  	</div>  	
 		  </div>
 		  <% end %>
-		  <%= paginate @stories %>
+		  <div class="solid-border pd20">
+		  	<%= paginate @stories %>
+		  </div>
 	</div>
 
 

@@ -35,7 +35,7 @@
         <% if current_user.role.super_admin %>
           <p>
             <%= form.label :writer %>
-            <%= form.select :writer_id, User.where(role_id: 2).collect {|x| [x.name, x.id]}, :include_blank => true %>
+            <%= form.select :writer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
           </p>
         <% else %>
           <p>
@@ -47,7 +47,7 @@
         <% if current_user.role.super_admin %>
           <p>
             <%= form.label :reviewer %>
-            <%= form.select :reviewer_id, User.where(role_id: 2).collect {|x| [x.name, x.id]}, :include_blank => true %>
+            <%= form.select :reviewer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
           </p>
         <% else %>
           <p>

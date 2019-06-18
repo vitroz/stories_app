@@ -7,6 +7,7 @@ class CreateStories < ActiveRecord::Migration[5.2]
       t.references :writer
       t.references :reviewer
       t.references :status
+      t.references :organization
 
       t.timestamps
     end

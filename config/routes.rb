@@ -5,8 +5,6 @@ Rails.application.routes.draw do
     post 'event' => 'stories#update_story_status_event'
   end
 
-  get '/stories' => 'stories#search'
-
   devise_scope :user do
     authenticated :user do
       root 'stories#index', as: :authenticated_root

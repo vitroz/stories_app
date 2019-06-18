@@ -6,7 +6,7 @@
     <%= form.text_area :body, :rows => 10, style: 'width:40%;' %>
   </p>
 
-    <% if @story.body == nil || @story.status.name == 'in_review' %>
+    <% if comments_enabled(@story) %>
 
 	  <p>
 	    <%= form.submit "Post", class: 'button is-light' %>

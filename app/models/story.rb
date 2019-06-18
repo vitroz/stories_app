@@ -4,6 +4,7 @@ class Story < ApplicationRecord
   belongs_to :writer, class_name: 'User', optional: true
   belongs_to :reviewer, class_name: 'User', optional: true
   belongs_to :status
+  belongs_to :organization
 
   has_many :comments
 

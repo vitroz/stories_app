@@ -5,8 +5,8 @@ class StoriesController < ApplicationController
   end
 
   def index 
-    @search = Story.search(params[:q])
-    @stories = @search.result.order(created_at: :asc).page(params[:page])
+    @search = Story.ransack(params[:q])
+    @stories = @search.result.order(created_at: :asc).page(params[:page]).where(["organization_id = :organization_id", { organization_id: current_user.organization_id, }])
   end
 
   def new
@@ -25,6 +25,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.creator = current_user
+    @story.organization_id = current_user.organization_id
 
     if @story.save
       next_state = StoryStateService.new(@story, current_user, nil).call

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_021953) do
+ActiveRecord::Schema.define(version: 2019_06_18_131258) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "commenter"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_021953) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_organizations_on_slug", unique: true
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,9 +50,11 @@ ActiveRecord::Schema.define(version: 2019_06_18_021953) do
     t.bigint "writer_id"
     t.bigint "reviewer_id"
     t.bigint "status_id"
+    t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_stories_on_creator_id"
+    t.index ["organization_id"], name: "index_stories_on_organization_id"
     t.index ["reviewer_id"], name: "index_stories_on_reviewer_id"
     t.index ["status_id"], name: "index_stories_on_status_id"
     t.index ["writer_id"], name: "index_stories_on_writer_id"
@@ -65,9 +68,11 @@ ActiveRecord::Schema.define(version: 2019_06_18_021953) do
     t.datetime "remember_created_at"
     t.bigint "role_id"
     t.string "name"
+    t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end

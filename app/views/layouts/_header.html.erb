@@ -18,7 +18,7 @@
 			<div class="column has-text-right">
 				<div class="logged-in">
 					<strong class="logged-user"> <%= current_user.name %> </strong> <br>
-					<small> <strong> <%= current_user.role.name %> </strong> </small>	
+					<small> <strong> <%= current_user.role.name.upcase.tr('_', ' ') %> </strong> </small>	
 				</div>
 			</div>
 		</div>
