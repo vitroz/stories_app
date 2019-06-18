@@ -32,10 +32,10 @@
           
         </div>
 
-        <% if current_user.role == 'chief_editor' %>
+        <% if current_user.role.super_admin %>
           <p>
             <%= form.label :writer %>
-            <%= form.select :writer_id, User.where(role: 'writer').collect {|x| [x.name, x.id]}, :include_blank => true %>
+            <%= form.select :writer_id, User.where(role_id: 2).collect {|x| [x.name, x.id]}, :include_blank => true %>
           </p>
         <% else %>
           <p>
@@ -44,10 +44,10 @@
           </p> 
         <% end %>
 
-        <% if current_user.role == 'chief_editor' %>
+        <% if current_user.role.super_admin %>
           <p>
             <%= form.label :reviewer %>
-            <%= form.select :reviewer_id, User.where(role: 'writer').collect {|x| [x.name, x.id]}, :include_blank => true %>
+            <%= form.select :reviewer_id, User.where(role_id: 2).collect {|x| [x.name, x.id]}, :include_blank => true %>
           </p>
         <% else %>
           <p>
@@ -58,10 +58,10 @@
        
         <p>
           <%= form.label :body %><br>
-          <%= form.text_area :body, :rows => 10, style: 'width:100%;' %>
+          <%= form.text_area :body, :rows => 10, style: 'width:100%;', disabled: (@story.writer_id != current_user.id) %>
         </p>
 
-        <% if (@story.writer_id == current_user.id || current_user.role == 'chief_editor') && (@story.status == 'draft'|| @story.status == 'pending' || @story.status == 'unassigned') %>
+        <% if (@story.writer_id == current_user.id || current_user.role.super_admin) && (@story.status.name == 'draft'|| @story.status.name == 'pending' || @story.status.name == 'unassigned') %>
           <div class="columns has-text-right">
             <div class="column">
               <%= link_to "Cancel", stories_path, class: 'button is-light' %>
@@ -78,7 +78,7 @@
      
     <% end %>
 
-    <% if @story.id != nil && (@story.status == 'draft' || @story.status == 'pending') && current_user.id != @story.reviewer_id %>
+    <% if @story.id != nil && (@story.status.name == 'draft' || @story.status.name == 'pending') && current_user.id != @story.reviewer_id && @story.body != nil %>
       <div class="columns">
         <div class="column">
           <%= button_to 'REQUEST REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -86,7 +86,7 @@
       </div>
     <% end %>
 
-    <% if @story.status == 'for_review' && @story.reviewer_id == current_user.id || (current_user.role == 'chief_editor' && @story.status == 'for_review' )%>
+    <% if @story.status.name == 'for_review' && @story.reviewer_id == current_user.id || (current_user.role.super_admin && @story.status.name == 'for_review' )%>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -94,7 +94,7 @@
       </div>
     <% end %>
 
-    <% if @story.status == 'in_review' && @story.reviewer_id == current_user.id || (current_user.role == 'chief_editor' && @story.status == 'in_review')%>
+    <% if @story.status.name == 'in_review' && @story.reviewer_id == current_user.id || (current_user.role.super_admin && @story.status.name == 'in_review')%>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'APPROVE', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -105,7 +105,7 @@
       </div>
     <% end %>
 
-    <% if current_user.role == 'chief_editor' && @story.id != nil && @story.status == 'approved' %>
+    <% if current_user.role.super_admin && @story.id != nil && @story.status.name == 'approved' %>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'PUBLISH', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -116,14 +116,16 @@
       </div>
     <% end %>
 
-    <% unless @story.id.nil? %>
-    <div class="solid-border mg10 pd20">
-      <h2>Comments</h2> <hr>
-        <%= render @story.comments %>
+    <% if @story.id != nil && (current_user.id == @story.creator_id || current_user.id == @story.writer_id || current_user.id == @story.reviewer_id) %>
 
-        <hr>
-        <%= render 'comments/form' %>
+      <div class="solid-border mg10 pd20">
+        <h2>Comments</h2> <hr>
+          <%= render @story.comments %>
+
+          <hr>
+          <%= render 'comments/form' %>
       </div>
+
     <% end %>
 
   </div>

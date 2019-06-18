@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  ROLES = ['chief_editor', 'writer']
-  
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,5 +10,7 @@ class User < ApplicationRecord
     foreign_key: 'writer_id'
   has_many :reviewed_stories, class_name: 'Story',
     foreign_key: 'reviewer_id'
+
+  belongs_to :role
 
 end

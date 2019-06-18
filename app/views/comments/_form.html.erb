@@ -5,7 +5,13 @@
     <%= form.label :body %><br>
     <%= form.text_area :body, :rows => 10, style: 'width:40%;' %>
   </p>
-  <p>
-    <%= form.submit "Post", class: 'button is-light' %>
-  </p>
+
+    <% if @story.body == nil || @story.status.name == 'in_review' %>
+
+	  <p>
+	    <%= form.submit "Post", class: 'button is-light' %>
+	  </p>
+ 	
+ 	<% end %>
+
 <% end %>

@@ -5,7 +5,8 @@ class StoriesController < ApplicationController
   end
 
   def index
-  	@stories = Story.all
+    #@stories = Story.all
+    @stories = Story.order(created_at: :asc).page(params[:page])
   end
 
   def new
@@ -26,6 +27,12 @@ class StoriesController < ApplicationController
     @story.creator = current_user
 
     if @story.save
+      next_state = StoryStateService.new(@story, current_user, nil).call
+
+      if next_state 
+        @story.update_column(:status_id, next_state) 
+      end 
+
       redirect_to stories_path
     else
       render 'stories/new'
@@ -40,8 +47,9 @@ class StoriesController < ApplicationController
       next_state = StoryStateService.new(@story, current_user, nil).call
 
       if next_state 
-        @story.update_column(:status, next_state) 
+        @story.update_column(:status_id, next_state) 
       end  
+
       redirect_to stories_path
     else
       render 'edit'
@@ -55,7 +63,7 @@ class StoriesController < ApplicationController
     next_state = StoryStateService.new(story, current_user, sub_action).call
 
     if next_state 
-      story.update_column(:status, next_state) 
+      story.update_column(:status_id, next_state) 
     end
 
     redirect_to stories_path

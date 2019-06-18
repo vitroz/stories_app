@@ -3,13 +3,18 @@ class Story < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   belongs_to :writer, class_name: 'User', optional: true
   belongs_to :reviewer, class_name: 'User', optional: true
+  belongs_to :status
 
   has_many :comments
 
   validate :writer_reviewer_are_the_same
-  validates :headline, :body, presence: true
+  validates :headline, presence: true
 
   after_initialize :init
+
+  paginates_per 10
+
+  #enum status: {unassigned: 'unassigned', draft: 'draft', for_review: 'for_review', in_review: 'in review', pending: 'pending', approved: 'approved', published: 'published', archived: 'archived'}
 
   def writer_reviewer_are_the_same
     errors.add(:must_be_different, " - writer can't be the same as the reviewer") if self.writer == self.reviewer && (self.writer != nil && self.reviewer != nil)
@@ -20,7 +25,7 @@ class Story < ApplicationRecord
   end
 
   def init
-    self.status ||= :unassigned
+    self.status ||= Status.find_by(name: 'unassigned')
   end
 
 end

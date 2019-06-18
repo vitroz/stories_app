@@ -35,13 +35,16 @@
 		  <div class="columns solid-border mg10">
 		  	<div class="column is-four-fifths">
 
-		  		<details>
-				    <summary> <strong> <%= story.headline %> </strong> </summary>
-				    <div>
-				    	<%= story.body %>
-				    </div>
 
-		  		</details>
+		  		<% if story.status.name == 'published' || (current_user.id == story.creator_id || current_user.id == story.writer_id || current_user.id == story.reviewer_id) %>
+
+		  			<%= render 'full_story', story: story %>
+
+		  		<% else %>
+
+		  			<%= render 'story_headline', story: story %>
+
+		  		<% end %>
 
 		  		<div class="columns is-full">
 		  			<br><br>
@@ -65,14 +68,14 @@
 			  		<div class="columns">
 				  		<div class="column">
 					  		<% if can? :update, Story %>
-								<%= link_to "Edit", edit_story_path(story), class: 'button is-light' %>
+								<%= link_to "View / Edit", edit_story_path(story), class: 'button is-light' %>
 							<% end %>
 				  		</div>			
 			  		</div>
 		  	</div>  	
 		  </div>
 		  <% end %>
-
+		  <%= paginate @stories %>
 	</div>
 
 
