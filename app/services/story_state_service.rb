@@ -30,7 +30,7 @@ class StoryStateService
   end
 
   def self.in_review(options) 
-    if options[:sub_action] == 'APPROVE' 
+    if options[:sub_action] == 'APPROVE' && (options[:story].reviewer.id == options[:user].id || options[:story].creator.id == options[:user].id)
       next_state = StoryStateService::APPROVED
     else
       next_state = StoryStateService::PENDING

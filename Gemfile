@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'devise'
 gem 'ransack'
 gem 'database_cleaner'
+gem 'paper_trail'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

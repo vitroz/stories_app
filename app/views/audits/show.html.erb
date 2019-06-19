@@ -1,0 +1,11 @@
+<div class="container">
+  <strong>Changes:</strong> <hr>
+  <%= @story_changes.each do |change| %>
+    <p><strong> user_id that performed the action: </strong> <%= change.whodunnit %> </p>
+    <p> <strong>Changes</strong> <%= change.object %> </p>
+    <hr>
+  <% end %>
+</div>
+
+
+<%= link_to 'Back', stories_path %>

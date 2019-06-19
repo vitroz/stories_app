@@ -14,6 +14,7 @@ class Story < ApplicationRecord
   after_initialize :init
 
   paginates_per 4
+  has_paper_trail only: [:body,:status_id]
 
   def writer_reviewer_are_the_same
     errors.add(:must_be_different, " - writer can't be the same as the reviewer") if self.writer == self.reviewer && (self.writer != nil && self.reviewer != nil)

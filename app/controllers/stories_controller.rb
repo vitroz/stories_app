@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user!, except: [:home]
+  before_action :authenticate_user!
 
   def index 
     @search = Story.ransack(params[:q])
@@ -63,7 +63,7 @@ class StoriesController < ApplicationController
       next_state = StoryStateService.new(story, current_user, sub_action).call
 
       if next_state
-        story.update_column(:status_id, next_state)
+        story.update status_id: next_state
       end
 
     end

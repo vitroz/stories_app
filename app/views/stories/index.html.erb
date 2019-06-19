@@ -61,6 +61,11 @@
 			  				</div>
 			  			</div>
 				  		<div class="columns">
+				  			<% if current_user.role.super_admin %>
+						  		<div class="column">
+									<%= link_to '<i class="fa fa-clock-o"></i>'. html_safe, "/story/#{story.id}/audit", class: 'button is-light' %>
+						  		</div>	
+					  		<% end %>				  			
 					  		<div class="column">
 						  		<% if can? :update, Story %>
 									<%= link_to "View / Edit", edit_story_path(story), class: 'button is-light' %>

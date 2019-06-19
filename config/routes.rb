@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     post 'event' => 'stories#update_story_status_event'
   end
 
+  resources :audits, only: [:show]
+  get '/story/:id/audit' => 'audits#show'
+
   devise_scope :user do
     authenticated :user do
       root 'stories#index', as: :authenticated_root
