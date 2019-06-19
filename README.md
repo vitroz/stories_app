@@ -43,6 +43,12 @@ sudo docker-compose up
 sudo docker-compose run rspec
 
 ```
+### Alternative - If you want to use just the database as an external service
+```
+docker run -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql mysql:5.7
+
+```
+Then run the commands bellow, except number 1.
 
 ### Without Docker
 
@@ -54,7 +60,7 @@ sudo apt-get install mysql-server
 ```
 **2. Access project root**
 ```
-cd octoevents/
+cd stories_app/
 ```
 
 **3. Install gems**
