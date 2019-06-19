@@ -82,8 +82,10 @@ rails s
 ```
 
 **7. Default Data
+
 ```
-By using the seeds.rb file included in the project. You have some Users created for logging into the app.
+By using the seeds.rb file included in the project. 
+You have some Users created for logging into the app.
 
 The default password for all of them is: 123456
 
@@ -95,6 +97,7 @@ The default password for all of them is: 123456
   email: cpn2_writer@test.com - writer of organization 'cpn1'
   email: cpn2_reviewer@test.com' -  reviewer of organization 'cpn2'
   
-  All roles assigned above are related to the stories created when running the default seeds.rb. The only two roles the app has is chief editor and writer.
+  All roles assigned above are related to the stories created 
+  when running the default seeds.rb. The only two roles available are chief editor and writer.
   
 ```
