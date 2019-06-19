@@ -12,7 +12,7 @@ It was developed using **Ruby On Rails** and **MySQL Database**
 
 **1. Create containers**
 ```
-sudo docker-compose up
+sudo docker-compose build
 ```
 After creating, press Ctrl + C to exit the container
 
