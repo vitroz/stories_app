@@ -29,15 +29,15 @@ module StoriesHelper
   end
 
   def story_reviewer(story)
-    if story && story.writer.present?
-      story.writer.name
+    if story && story.reviewer.present?
+      story.reviewer.name
     else
       'None'
     end
   end
 
   def writer_reviewer_area(user,story)
-    if user.role.super_admin && (story.status == 'draft' || story.status.name == 'unassigned')
+    if user.role.super_admin && story.status.name == 'unassigned'
       'writer_combobox'
     else
       'writer_text'

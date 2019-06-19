@@ -27,3 +27,11 @@ User.create(email: 'writer2@test.com', password: '123456', password_confirmation
 User.create(email: 'reviewer2@test.com', password: '123456', password_confirmation: '123456', name: 'Finn', role_id: 2, organization_id: 2);
 User.create(email: 'writer3@test.com', password: '123456', password_confirmation: '123456', name: 'Joe', role_id: 2, organization_id: 2);
 User.create(email: 'reviewer3@test.com', password: '123456', password_confirmation: '123456', name: 'Doe', role_id: 2, organization_id: 2);
+Story.create(headline: 'Draft Story Sample', body: 'Content Sample', status_id: 2, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'Unnasigned Story Sample', body: nil, status_id: 1, creator_id: 1, writer_id: nil, reviewer_id: nil, organization_id: 1)
+Story.create(headline: 'For Review Story Sample', body: 'Content Sample', status_id: 3, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'In Review Story Sample', body: 'Content Sample', status_id: 4, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'Pending Story Sample', body: 'Content Sample', status_id: 5, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'Approved Story Sample', body: 'Content Sample', status_id: 6, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'Published Story Sample', body: 'Content Sample', status_id: 7, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
+Story.create(headline: 'Archived Story Sample', body: 'Content Sample', status_id: 8, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
