@@ -26,7 +26,13 @@ sudo docker-compose run web rake db:create
 sudo docker-compose run web rake db:migrate
 ```
 
-**4. Start container**
+**4. Run Seeds**
+
+```
+rake db:seed
+```
+
+**5. Start container**
 ```
 sudo docker-compose up
 ```
