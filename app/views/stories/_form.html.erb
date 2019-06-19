@@ -31,36 +31,14 @@
           
         </div>
 
-        <% if current_user.role.super_admin && (@story.status == 'draft' || @story.status == 'unassigned')%>
-          <p>
-            <%= form.label :writer %>
-            <%= form.select :writer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
-          </p>
-        <% else %>
-          <p>
-            <%= form.label 'Writer:' %>
-            <%= @story.writer.name %>
-          </p> 
-        <% end %>
-
-        <% if current_user.role.super_admin && (@story.status == 'draft' || @story.status == 'unassigned')%>
-          <p>
-            <%= form.label :reviewer %>
-            <%= form.select :reviewer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
-          </p>
-        <% else %>
-          <p>
-            <%= form.label 'Reviewer:' %>
-            <%= @story.reviewer.name %>
-          </p>    
-        <% end %>
+        <%= render writer_reviewer_area(current_user,@story), {story: @story, current_user: current_user, form: form} %>
        
         <p>
           <%= form.label :body %><br>
-          <%= form.text_area :body, :rows => 10, style: 'width:100%;', disabled: (@story.writer_id != current_user.id) %>
+          <%= form.text_area :body, :rows => 10, style: 'width:100%;', disabled: (!is_story_writer(@story, current_user)) %>
         </p>
 
-        <% if (@story.writer_id == current_user.id || current_user.role.super_admin) && (@story.status.name == 'draft'|| @story.status.name == 'pending' || @story.status.name == 'unassigned') %>
+        <% if story_is_editable(@story, current_user) %>
           <div class="columns has-text-right">
             <div class="column">
               <%= link_to "Cancel", stories_path, class: 'button is-light' %>
@@ -77,7 +55,7 @@
      
     <% end %>
 
-    <% if @story.id != nil && (@story.status.name == 'draft' || @story.status.name == 'pending') && current_user.id != @story.reviewer_id && @story.body != nil %>
+    <% if can_request_review(@story, current_user) %>
       <div class="columns">
         <div class="column">
           <%= button_to 'REQUEST REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -85,7 +63,7 @@
       </div>
     <% end %>
 
-    <% if @story.status.name == 'for_review' && @story.reviewer_id == current_user.id || (current_user.role.super_admin && @story.status.name == 'for_review' )%>
+    <% if story_will_review(@story, current_user) %>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'REVIEW', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -93,7 +71,7 @@
       </div>
     <% end %>
 
-    <% if @story.status.name == 'in_review' && @story.reviewer_id == current_user.id || (current_user.role.super_admin && @story.status.name == 'in_review')%>
+    <% if story_is_in_review(@story, current_user)%>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'APPROVE', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -104,7 +82,7 @@
       </div>
     <% end %>
 
-    <% if current_user.role.super_admin && @story.id != nil && @story.status.name == 'approved' %>
+    <% if story_is_approved_by_reviewer(@story, current_user) %>
       <div class="columns has-text-centered">
         <div class="column">
           <%= button_to 'PUBLISH', story_event_path(@story), name: "sub_action", method: :post, class: 'button is-info' %>
@@ -115,7 +93,7 @@
       </div>
     <% end %>
 
-    <% if @story.id != nil && (current_user.id == @story.creator_id || current_user.id == @story.writer_id || current_user.id == @story.reviewer_id) %>
+    <% if story_can_view_comments(@story, current_user) %>
 
       <div class="solid-border mg10 pd20">
         <h2>Comments</h2> <hr>

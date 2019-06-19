@@ -1,0 +1,8 @@
+<p>
+<%= form.label :writer %>
+<%= form.select :writer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
+</p>
+<p>
+<%= form.label :reviewer %>
+<%= form.select :reviewer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
+</p>
