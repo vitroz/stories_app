@@ -81,7 +81,7 @@ rails s
 
 ```
 
-***7. Default Data
+**7. Default Data
 ```
 By using the seeds.rb file included in the project. You have some Users created for logging into the app.
 
