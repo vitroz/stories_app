@@ -40,7 +40,7 @@ sudo docker-compose up
 **Run Tests**
 
 ```
-sudo docker-compose run rspec
+sudo docker-compose run web rspec
 
 ```
 ### Alternative - If you want to use just the database as an external service
