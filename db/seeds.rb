@@ -18,15 +18,15 @@ Status.create(name: 'published')
 Status.create(name: 'archived')
 Organization.create(name: 'Company 1', slug: 'cpn1')
 Organization.create(name: 'Company 2', slug: 'cpn2')
-User.create(email: 'chief@test.com', password: '123456', password_confirmation: '123456', name: 'Joseph', role_id: 1, organization_id: 1);
-User.create(email: 'writer@test.com', password: '123456', password_confirmation: '123456', name: 'Will', role_id: 2, organization_id: 1);
-User.create(email: 'reviewer@test.com', password: '123456', password_confirmation: '123456', name: 'Susan', role_id: 2, organization_id: 1);
-User.create(email: 'writer0@test.com', password: '123456', password_confirmation: '123456', name: 'Willow', role_id: 2, organization_id: 1);
-User.create(email: 'chief2@test.com', password: '123456', password_confirmation: '123456', name: 'Josepho', role_id: 1, organization_id: 2);
-User.create(email: 'writer2@test.com', password: '123456', password_confirmation: '123456', name: 'Matt', role_id: 2, organization_id: 2);
-User.create(email: 'reviewer2@test.com', password: '123456', password_confirmation: '123456', name: 'Finn', role_id: 2, organization_id: 2);
-User.create(email: 'writer3@test.com', password: '123456', password_confirmation: '123456', name: 'Joe', role_id: 2, organization_id: 2);
-User.create(email: 'reviewer3@test.com', password: '123456', password_confirmation: '123456', name: 'Doe', role_id: 2, organization_id: 2);
+User.create(email: 'cpn1_chief@test.com', password: '123456', password_confirmation: '123456', name: 'Joseph', role_id: 1, organization_id: 1);
+User.create(email: 'cpn1_writer@test.com', password: '123456', password_confirmation: '123456', name: 'Will', role_id: 2, organization_id: 1);
+User.create(email: 'cpn1_reviewer@test.com', password: '123456', password_confirmation: '123456', name: 'Susan', role_id: 2, organization_id: 1);
+User.create(email: 'cpn1_writer2@test.com', password: '123456', password_confirmation: '123456', name: 'Willow', role_id: 2, organization_id: 1);
+User.create(email: 'cpn2_chief@test.com', password: '123456', password_confirmation: '123456', name: 'Josepho', role_id: 1, organization_id: 2);
+User.create(email: 'cpn2_writer@test.com', password: '123456', password_confirmation: '123456', name: 'Matt', role_id: 2, organization_id: 2);
+User.create(email: 'cpn2_reviewer@test.com', password: '123456', password_confirmation: '123456', name: 'Finn', role_id: 2, organization_id: 2);
+User.create(email: 'cpn2_writer2@test.com', password: '123456', password_confirmation: '123456', name: 'Joe', role_id: 2, organization_id: 2);
+User.create(email: 'cpn2_reviewer2@test.com', password: '123456', password_confirmation: '123456', name: 'Doe', role_id: 2, organization_id: 2);
 Story.create(headline: 'Draft Story Sample', body: 'Content Sample', status_id: 2, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)
 Story.create(headline: 'Unnasigned Story Sample', body: nil, status_id: 1, creator_id: 1, writer_id: nil, reviewer_id: nil, organization_id: 1)
 Story.create(headline: 'For Review Story Sample', body: 'Content Sample', status_id: 3, creator_id: 1, writer_id: 2, reviewer_id: 3, organization_id: 1)

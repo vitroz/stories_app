@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_06_19_140448) do
 
-  create_table "audits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "story_id"
-    t.text "previous_story_body"
-    t.text "new_story_body"
-    t.integer "previous_status"
-    t.integer "new_status"
-    t.integer "performed_by_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
