@@ -28,7 +28,6 @@ gem 'cancancan'
 gem 'kaminari'
 gem 'devise'
 gem 'ransack'
-gem 'draper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

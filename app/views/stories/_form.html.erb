@@ -1,7 +1,6 @@
   <div class="container">
     
     <%= form_with model: @story, local: true do |form| %>
-     
       <% if @story.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -27,12 +26,12 @@
           </div>
 
             <div class="is-one-fifth column has-text-centered">
-               <div class="solid-border <%= "#{story_status(@story)}-status" %>"> <span> <%= story_status_upper(@story) %> </span> </div>         
+               <div class="solid-border <%= "#{status(@story)}-status" %>"> <span> <%= status_upper(@story) %> </span> </div>         
             </div>
           
         </div>
 
-        <% if current_user.role.super_admin %>
+        <% if current_user.role.super_admin && (@story.status == 'draft' || @story.status == 'unassigned')%>
           <p>
             <%= form.label :writer %>
             <%= form.select :writer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>
@@ -44,7 +43,7 @@
           </p> 
         <% end %>
 
-        <% if current_user.role.super_admin %>
+        <% if current_user.role.super_admin && (@story.status == 'draft' || @story.status == 'unassigned')%>
           <p>
             <%= form.label :reviewer %>
             <%= form.select :reviewer_id, User.where(role_id: 2, organization_id: current_user.organization_id).collect {|x| [x.name, x.id]}, :include_blank => true %>

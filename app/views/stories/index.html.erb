@@ -34,49 +34,42 @@
 			</div>
 		</div>
 
-		  <% @stories.each do |story| %>
-		  <div class="columns solid-border mg10">
-		  	<div class="column is-four-fifths">
+		  <% @stories.each do |s| %>
+			  <% present(s) do |story| %>
+			  <div class="columns solid-border mg10">
+			  	<div class="column is-four-fifths">
 
+			  		<%= render story.card_partial(current_user), story: story %>
 
-		  		<% if story_body_visible(current_user, story) %>
-
-		  			<%= render 'full_story', story: story %>
-
-		  		<% else %>
-
-		  			<%= render 'story_headline', story: story %>
-
-		  		<% end %>
-
-		  		<div class="columns is-full">
-		  			<br><br>
-		  		</div>
-		  		<div class="columns">
-			  		<div class="column">
-						<span>Writer: <%= defined?(story.writer.name) ? story.writer.name : 'None' %> </span>		
+			  		<div class="columns is-full">
+			  			<br><br>
 			  		</div>
-			  		<div class="column">
-			  			<span>Reviewer: <%= defined?(story.reviewer.name) ? story.reviewer.name : 'None' %> </span>		
-			  		</div>  			
-		  		</div>
-		  	</div>
-		  	<div class="column has-text-centered">
-		  		<div class="solid-border <%= "#{story_status(story)}-status" %>"> <span> <%= story_status_upper(story) %> </span> </div>
-		  			<div class="columns">
-		  				<div class="column">
-		  					<span> On: <%= story.on_story_time %> </span>
-		  				</div>
-		  			</div>
 			  		<div class="columns">
 				  		<div class="column">
-					  		<% if can? :update, Story %>
-								<%= link_to "View / Edit", edit_story_path(story), class: 'button is-light' %>
-							<% end %>
-				  		</div>			
+							<span>Writer: <%= story.writer %> </span>		
+				  		</div>
+				  		<div class="column">
+				  			<span>Reviewer: <%= story.reviewer %> </span>		
+				  		</div>  			
 			  		</div>
-		  	</div>  	
-		  </div>
+			  	</div>
+			  	<div class="column has-text-centered">
+			  		<div class="solid-border <%= "#{story.status}-status" %>"> <span> <%= story.status_upper %> </span> </div>
+			  			<div class="columns">
+			  				<div class="column">
+			  					<span> Created on: <%= story.on_story_time %> </span>
+			  				</div>
+			  			</div>
+				  		<div class="columns">
+					  		<div class="column">
+						  		<% if can? :update, Story %>
+									<%= link_to "View / Edit", edit_story_path(story), class: 'button is-light' %>
+								<% end %>
+					  		</div>			
+				  		</div>
+			  	</div>  	
+			  </div>
+			  <% end %>
 		  <% end %>
 		  <div class="solid-border pd20">
 		  	<%= paginate @stories %>

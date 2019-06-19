@@ -19,10 +19,6 @@ class Story < ApplicationRecord
     errors.add(:must_be_different, " - writer can't be the same as the reviewer") if self.writer == self.reviewer && (self.writer != nil && self.reviewer != nil)
   end
 
-  def on_story_time
-    self.created_at = self.created_at.strftime("%m/%d/%Y")
-  end
-
   def init
     self.status ||= Status.find_by(name: 'unassigned')
   end

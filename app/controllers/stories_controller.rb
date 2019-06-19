@@ -18,10 +18,6 @@ class StoriesController < ApplicationController
     authorize! :update, @story
   end
 
-  def show
-    @story = Story.find(params[:id])
-  end
-
   def create
     @story = Story.new(story_params)
     @story.creator = current_user
