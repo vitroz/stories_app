@@ -29,7 +29,7 @@ sudo docker-compose run web rake db:migrate
 **4. Run Seeds**
 
 ```
-rake db:seed
+sudo docker-compose run web rake db:seed
 ```
 
 **5. Start container**
