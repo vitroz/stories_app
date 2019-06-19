@@ -93,7 +93,7 @@ RSpec.describe StoriesHelper, type: :helper do
     expect(story_is_editable(story_published, user)).to eq(false)
   end
 
-  it "User can request review" do
+  it "User can request review options" do
   	story_draft = Story.find(1)
   	story_pending = Story.find(5)
   	user = User.find(2)
@@ -103,10 +103,22 @@ RSpec.describe StoriesHelper, type: :helper do
     expect(can_request_review(story_pending, reviewer)).to eq(false)
   end
 
-  it "Story is set to be reviewed" do
+  it "Story is set to be reviewed options" do
   	story_for_review = Story.find(3)
   	reviewer = User.find(3)
     expect(story_will_review(story_for_review, reviewer)).to eq(true)
+  end
+
+  it "Story is being reviewed options" do
+  	story_in_review = Story.find(4)
+  	reviewer = User.find(3)
+    expect(story_is_in_review(story_in_review, reviewer)).to eq(true)
+  end
+
+  it "Story is approved options" do
+  	story_published = Story.find(6)
+  	user_admin = User.find(1)
+    expect(story_is_approved_by_reviewer(story_published, user_admin)).to eq(true)
   end
 
 end

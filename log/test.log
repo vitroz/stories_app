@@ -13287,3 +13287,1244 @@ FOREIGN KEY (`story_id`)
   [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
   [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (6.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (3.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (1.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'content_services_test'[0m
+  [1m[35m (26.0ms)[0m  [1m[35mTRUNCATE TABLE `ar_internal_metadata`;[0m
+  [1m[35m (24.5ms)[0m  [1m[35mTRUNCATE TABLE `audits`;[0m
+  [1m[35m (19.2ms)[0m  [1m[35mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (25.7ms)[0m  [1m[35mTRUNCATE TABLE `organizations`;[0m
+  [1m[35m (23.2ms)[0m  [1m[35mTRUNCATE TABLE `roles`;[0m
+  [1m[35m (18.4ms)[0m  [1m[35mTRUNCATE TABLE `statuses`;[0m
+  [1m[35m (27.7ms)[0m  [1m[35mTRUNCATE TABLE `stories`;[0m
+  [1m[35m (23.0ms)[0m  [1m[35mTRUNCATE TABLE `users`;[0m
+  [1m[35m (2.9ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (4.8ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('chief_editor', TRUE, '2019-06-19 05:07:41', '2019-06-19 05:07:41')[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (2.7ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('writer', FALSE, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.5ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('unassigned', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (3.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('draft', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.2ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('for_review', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.5ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('in_review', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.7ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('pending', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.6ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('approved', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.4ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('published', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.3ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('archived', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (1.9ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 1', 'cpn1', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (1.7ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 2', 'cpn2', '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief@test.com', '$2a$04$Mb0tD0jdTxkUnHbbdNK8K.OFUy/xO6bmShk1ql3iMYVqa5EZG.Inu', 1, 'Joseph', 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer@test.com', '$2a$04$J6B.3Ge092qI2Q1KBOt/IehQRQrZk2EBlBxGmhle5w79tFU4ef0xC', 2, 'Will', 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (4.3ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer@test.com', '$2a$04$XaaQF9wSRd/0bpTfMK8qxe4icZflVmrt524wwAHHybv/PXg/ni1bO', 2, 'Susan', 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer0@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.1ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer0@test.com', '$2a$04$d9omOmU1hiXvm/g7rzyaGeRM513MSzjX1e6stVNxWZmPS4pjov1Hy', 2, 'Willow', 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.6ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief2@test.com', '$2a$04$JweURvljEUhpVXgLpSbVveHVt.4JjNV0CjDPr5NmRg6LNikkrSbWm', 1, 'Josepho', 2, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.6ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer2@test.com', '$2a$04$O8Qw5Ge12sVjJOaKR4Vzi.V9JCGoQU2DAcLkBBkPFGdAmCgrEZI46', 2, 'Matt', 2, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (3.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer2@test.com', '$2a$04$z616JQ2K0eWLTEFY5xnHQeif9L27hEt8LeZynpXYZvfysL38ERSOy', 2, 'Finn', 2, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.1ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer3@test.com', '$2a$04$Rc4yZA0honIuxgf6AnRkw.Jl3gFVVSP/zbi7IF/XIyEVkTln84v4W', 2, 'Joe', 2, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.7ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (4.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer3@test.com', '$2a$04$cxLKDoecR3FChmrkutjdO.RgNJVS7nX4kmRzRT1IEi8I9/FcS2wfq', 2, 'Doe', 2, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.9ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Draft Story Sample', 'Content Sample', 1, 2, 3, 2, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.3ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Create (1.7ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `creator_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Unnasigned Story Sample', 1, 1, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.4ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (3.7ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('For Review Story Sample', 'Content Sample', 1, 2, 3, 3, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.5ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('In Review Story Sample', 'Content Sample', 1, 2, 3, 4, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.6ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Pending Story Sample', 'Content Sample', 1, 2, 3, 5, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.5ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Approved Story Sample', 'Content Sample', 1, 2, 3, 6, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.4ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Published Story Sample', 'Content Sample', 1, 2, 3, 7, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 8 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.8ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Archived Story Sample', 'Content Sample', 1, 2, 3, 8, 1, '2019-06-19 05:07:42', '2019-06-19 05:07:42')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.1ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.2ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (3.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (3.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (4.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (1.7ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (3.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (4.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (3.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (5.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (4.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (1.6ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (2.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'content_services_test'[0m
+  [1m[35m (19.2ms)[0m  [1m[35mTRUNCATE TABLE `ar_internal_metadata`;[0m
+  [1m[35m (19.7ms)[0m  [1m[35mTRUNCATE TABLE `audits`;[0m
+  [1m[35m (35.8ms)[0m  [1m[35mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (16.2ms)[0m  [1m[35mTRUNCATE TABLE `organizations`;[0m
+  [1m[35m (15.0ms)[0m  [1m[35mTRUNCATE TABLE `roles`;[0m
+  [1m[35m (14.3ms)[0m  [1m[35mTRUNCATE TABLE `statuses`;[0m
+  [1m[35m (16.0ms)[0m  [1m[35mTRUNCATE TABLE `stories`;[0m
+  [1m[35m (17.2ms)[0m  [1m[35mTRUNCATE TABLE `users`;[0m
+  [1m[35m (1.6ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (1.7ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('chief_editor', TRUE, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (1.5ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('writer', FALSE, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.8ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('unassigned', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.7ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('draft', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.7ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('for_review', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.2ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('in_review', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.0ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('pending', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (4.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('approved', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.0ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('published', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('archived', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (1.8ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 1', 'cpn1', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (1.8ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 2', 'cpn2', '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief@test.com', '$2a$04$Uum.837z3uov9Hnsu5mUhO.VnIx3kHxLwk7BDtu4MPWN.v62OXhf.', 1, 'Joseph', 1, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (3.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (3.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (3.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer@test.com', '$2a$04$geKPmBtTnpphNSduKHyQse7U8vOoNS4oAgzxjoUfeJEwNTjfIFiWO', 2, 'Will', 1, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer@test.com', '$2a$04$4mm3.6WncnXDWccx4/MTTeVDx4OWepvwwJ5KaT/tC0poIHOU4BB1m', 2, 'Susan', 1, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer0@test.com' LIMIT 1[0m
+  [1m[36mRole Load (3.6ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer0@test.com', '$2a$04$d7eA.9HuNs8czJQj9C9Ba.kgEJwy8yZZ4kNSeo7c7LhnYcd3WHidu', 2, 'Willow', 1, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief2@test.com', '$2a$04$aNoIW6lPqDz/7AgJIpf3Vuc3R1x//aNh7L4WpIkzVFvIgkZuRSVKa', 1, 'Josepho', 2, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer2@test.com', '$2a$04$SvkfGmoHZyEKGzDBNmOIFOOj4kPkHCgRzNdPR.vJg4TLrhDvn.fx.', 2, 'Matt', 2, '2019-06-19 05:08:52', '2019-06-19 05:08:52')[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (3.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer2@test.com', '$2a$04$SLB2PhXTaRwv6/u7qlQAquRUOtnxXmf7vuMUOSSnDgeNZluvRFPPi', 2, 'Finn', 2, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (3.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer3@test.com', '$2a$04$YIymxBVwA.UC4POq.rucSuCEvebhHw4J7uxUrt/WB62Zbh/ZqPbw.', 2, 'Joe', 2, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.2ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer3@test.com', '$2a$04$o58ZypjfqpC15Viq6TQt3uCeZn8Uy82dB6uQ/OPHJ1av2DpDG74a6', 2, 'Doe', 2, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.7ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Draft Story Sample', 'Content Sample', 1, 2, 3, 2, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Create (1.8ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `creator_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Unnasigned Story Sample', 1, 1, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.1ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('For Review Story Sample', 'Content Sample', 1, 2, 3, 3, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (22.9ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('In Review Story Sample', 'Content Sample', 1, 2, 3, 4, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.0ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Pending Story Sample', 'Content Sample', 1, 2, 3, 5, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.6ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Approved Story Sample', 'Content Sample', 1, 2, 3, 6, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (5.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.6ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Published Story Sample', 'Content Sample', 1, 2, 3, 7, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 8 LIMIT 1[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (3.5ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Archived Story Sample', 'Content Sample', 1, 2, 3, 8, 1, '2019-06-19 05:08:53', '2019-06-19 05:08:53')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.2ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (3.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (3.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (2.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (3.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (5.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.1ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (2.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (2.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Load (2.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (4.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (4.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (1.7ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (2.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (4.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (4.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (2.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (2.4ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (2.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'content_services_test'[0m
+  [1m[35m (25.0ms)[0m  [1m[35mTRUNCATE TABLE `ar_internal_metadata`;[0m
+  [1m[35m (20.7ms)[0m  [1m[35mTRUNCATE TABLE `audits`;[0m
+  [1m[35m (25.4ms)[0m  [1m[35mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (30.9ms)[0m  [1m[35mTRUNCATE TABLE `organizations`;[0m
+  [1m[35m (23.3ms)[0m  [1m[35mTRUNCATE TABLE `roles`;[0m
+  [1m[35m (27.4ms)[0m  [1m[35mTRUNCATE TABLE `statuses`;[0m
+  [1m[35m (27.2ms)[0m  [1m[35mTRUNCATE TABLE `stories`;[0m
+  [1m[35m (28.6ms)[0m  [1m[35mTRUNCATE TABLE `users`;[0m
+  [1m[35m (1.9ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (2.2ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('chief_editor', TRUE, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (3.6ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('writer', FALSE, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.2ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('unassigned', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (3.3ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('draft', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('for_review', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('in_review', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (3.3ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('pending', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (3.5ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('approved', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.3ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('published', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.2ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('archived', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (5.9ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 1', 'cpn1', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (2.3ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 2', 'cpn2', '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief@test.com', '$2a$04$/8sNbjBf7uCd20SA9O.U5uJVU2IjQfKIcjG07NXqII3x2FICvuwmS', 1, 'Joseph', 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer@test.com', '$2a$04$leSf5oQYiZimkb2iSH.q8eozhx2CyxGwXYQo8zW1Qvm.fSwKXPjm2', 2, 'Will', 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.4ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer@test.com', '$2a$04$gmp38AI07iXVY6hdyrtVkOx9QVpeTEgiSMgmewTDa/if6aJ.ilMnq', 2, 'Susan', 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer0@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer0@test.com', '$2a$04$T4h5occKbgY7zBj2mx9rJOzYQs4BajK.zL3vXhg5nNm1uEXfX4CQy', 2, 'Willow', 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (3.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief2@test.com', '$2a$04$kQC.jIdl6EGdcHcSLWlL0u.9d1JkUYqjI.6g1OnHi0saRyjBUfC4m', 1, 'Josepho', 2, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (4.3ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (3.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (4.0ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer2@test.com', '$2a$04$bn5T5BD0GvNcjlz9vDxBGexYQC4P6x1ODIQT6uEUZEIm2we6PtI5S', 2, 'Matt', 2, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (3.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer2@test.com', '$2a$04$7U2es1EPpHLCiu4EayRuh.gd2bH4wqyvGqNTLaV6KrVL7ZzKxozK2', 2, 'Finn', 2, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (5.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.2ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer3@test.com', '$2a$04$Bh/86Cuwou9A5tSP0SBxb.p25EJB96hKNXmyvmp1cJ4N5a8kg1WX6', 2, 'Joe', 2, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.3ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer3@test.com', '$2a$04$c6HJGwE9ElbKFpVJaSwSMOKSjzJ72B9A5afBDxPbhb85P8LTNVWFm', 2, 'Doe', 2, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.1ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Draft Story Sample', 'Content Sample', 1, 2, 3, 2, 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Create (3.3ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `creator_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Unnasigned Story Sample', 1, 1, 1, '2019-06-19 05:09:21', '2019-06-19 05:09:21')[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.4ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.2ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('For Review Story Sample', 'Content Sample', 1, 2, 3, 3, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (3.2ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('In Review Story Sample', 'Content Sample', 1, 2, 3, 4, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (4.4ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Pending Story Sample', 'Content Sample', 1, 2, 3, 5, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 6 LIMIT 1[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.0ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Approved Story Sample', 'Content Sample', 1, 2, 3, 6, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (5.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.0ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Published Story Sample', 'Content Sample', 1, 2, 3, 7, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 8 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.7ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Archived Story Sample', 'Content Sample', 1, 2, 3, 8, 1, '2019-06-19 05:09:22', '2019-06-19 05:09:22')[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (3.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (5.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (3.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (3.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (2.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (1.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Load (2.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (3.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.4ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (2.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (3.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (3.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (1.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (3.7ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'content_services_test'[0m
+  [1m[35m (18.5ms)[0m  [1m[35mTRUNCATE TABLE `ar_internal_metadata`;[0m
+  [1m[35m (16.7ms)[0m  [1m[35mTRUNCATE TABLE `audits`;[0m
+  [1m[35m (14.2ms)[0m  [1m[35mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (17.1ms)[0m  [1m[35mTRUNCATE TABLE `organizations`;[0m
+  [1m[35m (14.2ms)[0m  [1m[35mTRUNCATE TABLE `roles`;[0m
+  [1m[35m (18.3ms)[0m  [1m[35mTRUNCATE TABLE `statuses`;[0m
+  [1m[35m (19.6ms)[0m  [1m[35mTRUNCATE TABLE `stories`;[0m
+  [1m[35m (17.6ms)[0m  [1m[35mTRUNCATE TABLE `users`;[0m
+  [1m[35m (3.5ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (2.2ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('chief_editor', TRUE, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Create (4.5ms)[0m  [1m[32mINSERT INTO `roles` (`name`, `super_admin`, `created_at`, `updated_at`) VALUES ('writer', FALSE, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (5.5ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('unassigned', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (6.0ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('draft', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.9ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('for_review', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.0ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('in_review', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.0ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('pending', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.2ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('approved', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (2.1ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('published', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Create (1.8ms)[0m  [1m[32mINSERT INTO `statuses` (`name`, `created_at`, `updated_at`) VALUES ('archived', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (1.7ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 1', 'cpn1', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrganization Create (2.1ms)[0m  [1m[32mINSERT INTO `organizations` (`name`, `slug`, `created_at`, `updated_at`) VALUES ('Company 2', 'cpn2', '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (4.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief@test.com', '$2a$04$j04VU31sjs/dU6s3BTrvKuR46NzuwVfMWLtOb6zQVRI9uhk0SdI.O', 1, 'Joseph', 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.0ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer@test.com', '$2a$04$YvOEWFY2TfXR5lVimHpIPe4S4XGxKf/q/HEU1Xrr0M7Dz2wyCBHLS', 2, 'Will', 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer@test.com' LIMIT 1[0m
+  [1m[36mRole Load (2.2ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer@test.com', '$2a$04$59tJa8SKZvbHyBKsthwiFe/3712Pj0OtChbnwpvCtRRRFjQGVpqmS', 2, 'Susan', 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer0@test.com' LIMIT 1[0m
+  [1m[36mRole Load (3.6ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer0@test.com', '$2a$04$aaYPZxv5QfqWw5WzwlLWJuPfuD/7hp1gQTzFlAh7MOjKXGryWrvOq', 2, 'Willow', 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chief2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('chief2@test.com', '$2a$04$xzoeBm.sdJ.Ewq5jbzkms.SLSyyOGqaTG0tV1BkIXWFtR5nkQSzHu', 1, 'Josepho', 2, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.9ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (4.2ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer2@test.com', '$2a$04$ApSjaJfszG46yhmOt8n2Iu8bYnRcVq.0Xj2UzGe.CxSUUN6qZrd9W', 2, 'Matt', 2, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer2@test.com' LIMIT 1[0m
+  [1m[36mRole Load (11.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.7ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer2@test.com', '$2a$04$DtVWmmpRO/2mD/iq8TUYz.mTuOF9jUKpDfVK5JfAgg2PaTJdghNEm', 2, 'Finn', 2, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'writer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.6ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('writer3@test.com', '$2a$04$.PVbI5Bcg3qJ/HRG1TPvvOHb9ZSToF9HOLOZdaik8mrLuATXuulBa', 2, 'Joe', 2, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'reviewer3@test.com' LIMIT 1[0m
+  [1m[36mRole Load (1.5ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mOrganization Load (1.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `role_id`, `name`, `organization_id`, `created_at`, `updated_at`) VALUES ('reviewer3@test.com', '$2a$04$Hqgt5o7211TV5lcDklBgFerpaGsHTAZ.9n9UeZDnrb9qDMKNykxrq', 2, 'Doe', 2, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.5ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Draft Story Sample', 'Content Sample', 1, 2, 3, 2, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Create (3.0ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `creator_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Unnasigned Story Sample', 1, 1, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (4.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.5ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('For Review Story Sample', 'Content Sample', 1, 2, 3, 3, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.7ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('In Review Story Sample', 'Content Sample', 1, 2, 3, 4, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (3.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.0ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (2.0ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Pending Story Sample', 'Content Sample', 1, 2, 3, 5, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 6 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (1.8ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (3.6ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Approved Story Sample', 'Content Sample', 1, 2, 3, 6, 1, '2019-06-19 05:09:52', '2019-06-19 05:09:52')[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.3ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.8ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Published Story Sample', 'Content Sample', 1, 2, 3, 7, 1, '2019-06-19 05:09:53', '2019-06-19 05:09:53')[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStatus Load (2.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 8 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mStory Create (1.8ms)[0m  [1m[32mINSERT INTO `stories` (`headline`, `body`, `creator_id`, `writer_id`, `reviewer_id`, `status_id`, `organization_id`, `created_at`, `updated_at`) VALUES ('Archived Story Sample', 'Content Sample', 1, 2, 3, 8, 1, '2019-06-19 05:09:53', '2019-06-19 05:09:53')[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.2ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (4.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (4.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (1.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (2.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (4.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (3.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`status_id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[35m (3.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.3ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (5.6ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (2.1ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.2ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (7.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (6.2ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (4.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.2ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (2.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.9ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (6.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (4.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (5.1ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (4.4ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (4.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (6.5ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mStory Load (2.8ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 2 LIMIT 1[0m
+  [1m[36mStatus Load (5.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mStory Load (5.7ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 7 LIMIT 1[0m
+  [1m[36mStatus Load (5.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 7 LIMIT 1[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (2.6ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 2 LIMIT 1[0m
+  [1m[36mRole Load (3.8ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (3.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 1 LIMIT 1[0m
+  [1m[36mStatus Load (3.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 2 LIMIT 1[0m
+  [1m[36mStory Load (3.5ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 5 LIMIT 1[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 5 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 3 LIMIT 1[0m
+  [1m[36mStatus Load (1.9ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 3 LIMIT 1[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (3.0ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 4 LIMIT 1[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 4 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStory Load (2.1ms)[0m  [1m[34mSELECT  `stories`.* FROM `stories` WHERE `stories`.`id` = 6 LIMIT 1[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 6 LIMIT 1[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mRole Load (2.4ms)[0m  [1m[34mSELECT  `roles`.* FROM `roles` WHERE `roles`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.2ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (4.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (4.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.8ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (3.0ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.1ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.9ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (2.3ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (1.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (3.5ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStatus Load (3.7ms)[0m  [1m[34mSELECT  `statuses`.* FROM `statuses` WHERE `statuses`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mOrganization Load (2.1ms)[0m  [1m[34mSELECT  `organizations`.* FROM `organizations` WHERE `organizations`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (3.5ms)[0m  [1m[31mROLLBACK[0m
